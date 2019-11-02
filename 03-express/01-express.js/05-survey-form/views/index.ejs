@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cars</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+    
+</head>
+<body>
+    <div class="top">
+        <h1>Survey Form</h1><a class="home" href="/">Home</a>
+    </div>
+    <div class="main-box">   
+                    <form action="/info" method="POST">
+                        <h2>Name</h2>
+                        <input type="text" name="name" placeholder="Name Here" class="form-control" required><br>
+                        <h2>Dojo Location</h2>
+                        <select name="location" class="form-control" required>
+                            <option value="" selected disabled hidden>(Select One)</option>
+                            <option value="Chicago">Chicago</option>
+                            <option value="Online">Online</option>
+                            <option value="San Jose">San Jose</option>
+                            <option value="Los Angeles">Los Angeles</option>
+                        </select><br>
+                        <h2>Favorite Language</h2>
+                        <select name="language" class="form-control" required>
+                            <option value="" selected disabled hidden>(Select One)</option>
+                            <option value="Python">Python</option>
+                            <option value="JavaScript">JavaScript</option>
+                            <option value="Java">Java</option>
+                        </select><br>
+                        <h2>Comment (optional)</h2>
+                        <textarea name="comment" cols="20" rows="3" class="form-control"></textarea><br>
+                        <input type="submit" value="Submit" class="btn btn-warning">
+                    </form>
+    </div>
+ 
+
+</body>
+</html>
+

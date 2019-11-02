@@ -1,0 +1,10 @@
+img {
+    margin: 40px;
+}
+.main-content {
+    height: 650px;
+    width: 500px;
+    border-style: dashed;
+    border-color: black;
+    background-color: gray;
+}

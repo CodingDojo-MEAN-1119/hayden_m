@@ -1,0 +1,23 @@
+.main-content {
+    height: 300px;
+    width: 800px;
+    background-color: lightgrey;
+    border-style: solid;
+    border-color: gray;
+    padding-left: 50px;
+    padding-top: 20px;
+}
+.main-box {
+    height: 400px;
+    width: 800px;
+    background-color: lightgrey;
+    border-style: solid;
+    border-color: gray;
+    padding-top: 20px;
+}
+img {
+    margin: 20px;
+}
+h2 {
+    margin-left: 300px;
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cars</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+    
+</head>
+<body>
+    <div class="main-content">
+    <h2>Cats:</h2>
+    
+        <h3><%= cat.name %></h3>
+        <img src="<%= cat.image %>" alt="cat1" height="200" width="300">
+        <h3>Description: <%= cat.description %></h3>
+        <h3>Favorite Food: <%= cat.favFood %></h3>
+        <h3>Age: <%= cat.age %></h3>
+        
+        
+    </div>
+    <nav>
+            <div id="navbar">
+                <a href="/" class="col">Home</a>
+                <a href="/cat/0" class="col">Cat 1</a>
+                <a href="/cat/1" class="col">Cat 2</a>
+                <a href="/cat/2" class="col">Cat 3</a>
+                <a href="/cats/3" class="col">Cat 4</a>
+            </div>
+        </nav>
+
+</body>
+</html>

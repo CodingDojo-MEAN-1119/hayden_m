@@ -1,0 +1,11 @@
+img {
+    margin: 20px;
+}
+
+.main-content {
+    height: 300px;
+    width: 600px;
+    border-style: solid;
+    border-color: blue;
+    background-color: gray;
+}

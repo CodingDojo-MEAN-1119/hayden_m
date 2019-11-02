@@ -1,0 +1,26 @@
+.main-content {
+    height: 500px;
+    width: 400px;
+    border-style: solid;
+    border-color: gray;
+    color: white;
+    background-color: rgb(41, 43, 56);
+    padding: 10px;
+}
+.cat-content {
+    height: 1050px;
+    width: 400px;
+    border-style: solid;
+    border-color: gray;
+    color: white;
+    background-color: rgb(41, 43, 56);
+    padding: 10px;
+    display: inline-block;
+
+}
+img {
+    border-radius: 10%;
+}
+h2 {
+    margin-left: 100px;
+}

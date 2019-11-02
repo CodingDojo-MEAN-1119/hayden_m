@@ -1,1 +1,75 @@
 <!-- 2 hours -->
+<!-- 2 hours -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Trivia Game</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<style>
+*, body{
+    padding: 0px;
+    margin: 0px;
+    background: white;
+}
+.container{
+    width: 700px;
+}
+.btn{
+    margin: 20px;
+    
+}
+.data{
+    margin: 20px;
+    color: black;
+    border-style: dashed;
+    border-color: black;
+    background-color: lightgray;
+    padding: 20px;
+}
+.btn-box {
+    height: 200px;
+    width: 400px;
+    border-style: solid;
+    border-color: gray;
+    margin-top: 200px;
+    margin-left: 100px;
+    padding-top: 40px;
+    text-align: center;
+} 
+</style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="btn-box"> <h4>Trivia Game</h4>
+            <button class= "btn btn-primary start-game-btn" type="button">Click to Start</button></div>
+        </div>
+        <div class="data" style="display:none">
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+$('.start-game-btn').click(function(){
+    $.get("https://opentdb.com/api.php?amount=6&category=21&difficulty=medium&type=boolean", displayData);
+    $('.start-game-btn').hide();
+    $('.data').slideToggle();
+});
+function displayData(data) {
+    gameQuestions = data.results
+    count = 0
+    for(var question of gameQuestions){
+        count += 1
+        $('.data').append("Question #" + count + "<br>")
+        $('.data').append("Question category:" + question.category + "<br>")
+        $('.data').append("Question:" + question.question + "<br>")
+        $('.data').append("Correct:" + question.correct_answer + "<br>") 
+        $('.data').append("Incorrect:" + question.incorrect_answers + "<br>" + "<br>")
+    }
+}
+</script>
+</body>
+</html>

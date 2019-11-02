@@ -1,1 +1,80 @@
 // 1 hour
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Hunting Github</title>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+  <style>
+    .error {
+      border: 2px solid red;
+      background-color: black;
+      color: crimson;
+      min-height: 100px;
+      padding: 10px;
+    }
+
+    .error p {
+      text-align: center;
+      font-size: 30px;
+    }
+
+    .input {
+      width: 100%;
+      border: 3px solid green;
+    }
+
+    .search {
+      min-height: 25px;
+    }
+
+    .user-input {
+      margin: 10px 0px;
+      text-align: center;
+    }
+
+    button.search {
+      height: 55px;
+      width: 500px;
+      margin: 5px;
+    }
+
+    .card {
+      border: 1px solid black;
+    }
+
+  </style>
+  <script>
+
+
+$(document).ready(function(){
+    var displayName;
+    var displayId;
+    var displayAll;
+ 
+    $.get("https://api.github.com/users/hpmacdonald", function(data){ 
+      displayName = data.login;
+      displayId = data.id;
+      displayAll = data;
+  console.log("My display name is: ", displayName);
+  console.log("And my ID is: ", displayId);      
+  console.log("Here is everything together: ", displayAll);
+    });
+});       
+   
+
+  </script>
+</head>
+
+<body>
+  <main>
+    
+  </main>
+</body>
+
+</html>

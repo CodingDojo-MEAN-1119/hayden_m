@@ -1,0 +1,27 @@
+.main-content {
+    height: 1000px;
+    width: 865px;
+    border-style: dashed;
+    border-color: black;
+    padding: 20px;
+}
+.add-content {
+    height: 800px;
+    width: 400px;
+    border-style: solid;
+    border-color: gray;
+    display: inline-block;
+    vertical-align: top;
+    padding: 20px;
+}
+.display-content {
+    height: 800px;
+    width: 400px;
+    border-style: solid;
+    border-color: gray;
+    display: inline-block;
+    padding: 20px;
+}
+.top {
+    margin-left: 120px;
+}

@@ -1,0 +1,100 @@
+> show collections
+> use my_first_db
+switched to db my_first_db
+> db.createCollection('students')
+{ "ok" : 1 }
+> db.students.insert(({name: "Jack", home_state: "Washington", lucky_number: 2, birthday: {month: 12, day: 12, year: 2000}})
+... 
+... 
+> show collections
+students
+> db.students.find({name: "Jack"})
+> db.students.insert({name: "Jack", home_state: "Washington", lucky_number: 2, birthday: {month: 12, day: 12, year: 2000}})
+WriteResult({ "nInserted" : 1 })
+> db.students.find({name: "Jack"})
+{ "_id" : ObjectId("5dc0a3ebfd580e9ab2aa254f"), "name" : "Jack", "home_state" : "Washington", "lucky_number" : 2, "birthday" : { "month" : 12, "day" : 12, "year" : 2000 } }
+> db.students.insert({name: "George", home_state: "California", lucky_number: 3, birthday: {month: 11, day: 12, year: 2002}})
+WriteResult({ "nInserted" : 1 })
+> db.students.insert({name: "Jack", home_state: "Kentucky", lucky_number: 88, birthday: {month: 12, day: 17, year: 2008}})
+WriteResult({ "nInserted" : 1 })
+> db.students.insert({name: "Jack", home_state: "Oregon", lucky_number: 26, birthday: {month: 12, day: 17, year: 1990}})
+WriteResult({ "nInserted" : 1 })
+> db.students.insert({name: "Dave", home_state: "Texas", lucky_number: 26, birthday: {month: 12, day: 17, year: 2009}})
+WriteResult({ "nInserted" : 1 })
+> db.students.find()
+{ "_id" : ObjectId("5dc0a3ebfd580e9ab2aa254f"), "name" : "Jack", "home_state" : "Washington", "lucky_number" : 2, "birthday" : { "month" : 12, "day" : 12, "year" : 2000 } }
+{ "_id" : ObjectId("5dc0a476fd580e9ab2aa2550"), "name" : "George", "home_state" : "California", "lucky_number" : 3, "birthday" : { "month" : 11, "day" : 12, "year" : 2002 } }
+{ "_id" : ObjectId("5dc0a48ffd580e9ab2aa2551"), "name" : "Jack", "home_state" : "Kentucky", "lucky_number" : 88, "birthday" : { "month" : 12, "day" : 17, "year" : 2008 } }
+{ "_id" : ObjectId("5dc0a4aafd580e9ab2aa2552"), "name" : "Jack", "home_state" : "Oregon", "lucky_number" : 26, "birthday" : { "month" : 12, "day" : 17, "year" : 1990 } }
+{ "_id" : ObjectId("5dc0a4fefd580e9ab2aa2553"), "name" : "Dave", "home_state" : "Texas", "lucky_number" : 26, "birthday" : { "month" : 12, "day" : 17, "year" : 2009 } }
+> db.students.find({home_state:"Washington"})
+{ "_id" : ObjectId("5dc0a3ebfd580e9ab2aa254f"), "name" : "Jack", "home_state" : "Washington", "lucky_number" : 2, "birthday" : { "month" : 12, "day" : 12, "year" : 2000 } }
+> db.students.find({"lucky_number": {$gt: 3}})
+{ "_id" : ObjectId("5dc0a48ffd580e9ab2aa2551"), "name" : "Jack", "home_state" : "Kentucky", "lucky_number" : 88, "birthday" : { "month" : 12, "day" : 17, "year" : 2008 } }
+{ "_id" : ObjectId("5dc0a4aafd580e9ab2aa2552"), "name" : "Jack", "home_state" : "Oregon", "lucky_number" : 26, "birthday" : { "month" : 12, "day" : 17, "year" : 1990 } }
+{ "_id" : ObjectId("5dc0a4fefd580e9ab2aa2553"), "name" : "Dave", "home_state" : "Texas", "lucky_number" : 26, "birthday" : { "month" : 12, "day" : 17, "year" : 2009 } }
+> db.students.find({"lucky_number": {$lte: 3}})
+{ "_id" : ObjectId("5dc0a3ebfd580e9ab2aa254f"), "name" : "Jack", "home_state" : "Washington", "lucky_number" : 2, "birthday" : { "month" : 12, "day" : 12, "year" : 2000 } }
+{ "_id" : ObjectId("5dc0a476fd580e9ab2aa2550"), "name" : "George", "home_state" : "California", "lucky_number" : 3, "birthday" : { "month" : 11, "day" : 12, "year" : 2002 } }
+> db.students.update({name: "Jack"}, {$set: {interests: "Golf"}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.students.update({name: "Dave"}, {$set: {interests: "Cars"}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.students.update({name: "George"}, {$set: {interests: "Basketball"}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.students.update({interests: "coding", "brunch", "mongoDB"})
+2019-11-04T14:43:47.453-0800 E  QUERY    [js] uncaught exception: SyntaxError: missing : after property id :
+@(shell):1:49
+> db.students.update({name: "Dave"}, {$set: {interests: "taxes"}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.students.remove({interests: "taxes"})
+WriteResult({ "nRemoved" : 1 })
+> db.students.find({name: "Dave"})
+> db.students.find().pretty()
+{
+	"_id" : ObjectId("5dc0a3ebfd580e9ab2aa254f"),
+	"name" : "Jack",
+	"home_state" : "Washington",
+	"lucky_number" : 2,
+	"birthday" : {
+		"month" : 12,
+		"day" : 12,
+		"year" : 2000
+	},
+	"interests" : "Golf"
+}
+{
+	"_id" : ObjectId("5dc0a476fd580e9ab2aa2550"),
+	"name" : "George",
+	"home_state" : "California",
+	"lucky_number" : 3,
+	"birthday" : {
+		"month" : 11,
+		"day" : 12,
+		"year" : 2002
+	},
+	"interests" : "Basketball"
+}
+{
+	"_id" : ObjectId("5dc0a48ffd580e9ab2aa2551"),
+	"name" : "Jack",
+	"home_state" : "Kentucky",
+	"lucky_number" : 88,
+	"birthday" : {
+		"month" : 12,
+		"day" : 17,
+		"year" : 2008
+	}
+}
+{
+	"_id" : ObjectId("5dc0a4aafd580e9ab2aa2552"),
+	"name" : "Jack",
+	"home_state" : "Oregon",
+	"lucky_number" : 26,
+	"birthday" : {
+		"month" : 12,
+		"day" : 17,
+		"year" : 1990
+	}
+}
+> > db.students.remove({home_state: "California"})

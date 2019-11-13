@@ -1,0 +1,37 @@
+  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="/css/style.css">
+    <title>Edit Doggo</title>
+</head>
+<body>
+    <div class="wrapper">
+        <h1>Edit Details for <%=dogs.name%></h1>
+        <br>
+        <form action="/dogs/<%=dogs.id%>" method="post">
+            <table class="table table-striped">
+                    <th>Name</th>
+                    <th>Weight</th>
+                    <th>Color</th>
+                    <th>ID</th>
+                        <tr>
+                            <td><input type="text" name="name" id="name" value="<%=dogs.name%>"></td>
+                            <td><input type="text" name="weight" id="weight" value="<%=dogs.weight%>"></td>
+                            <td><input type="text" name="color" id="color" value="<%=dogs.color%>"></td>
+                            <td><%=dogs._id %></td>
+                        </tr>
+            </table>
+            <br>
+            <button class="btn btn-primary" type="submit">Make Changes</button>
+        </form>
+        <br>
+        <a href="/">Back to Home</a>  |  <a href="/dogs/destroy/<%=dogs.id%>">Delete</a>
+    </div>
+</body>
+</html>

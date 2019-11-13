@@ -1,0 +1,7 @@
+.main-content {
+    height: 500px;
+    width: 300px;
+    border-style: solid;
+    border-color: gray;
+    background-color: gray;
+}

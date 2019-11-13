@@ -1,32 +1,19 @@
-const express = require('express');
-const app = express();
-const session = require('express-session');
-const io = require('socket.io')(server);
-var counter = 0;
-app.set('view engine', 'ejs')
-app.set('views', __dirname + '/views')
-app.use(express.static(__dirname + '/static'));
-app.use(session({
-    secret: 'keyboardkitteh',
-    resave: false,
-    saveUninitialized: true,
-    cookie: { maxAge: 60000 }
-}));
-io.on('connection', function (socket) { 
-  
-    socket.emit('greeting', { msg: 'Greetings, from server Node, brought to you by Sockets! -Server' }); //3
-    socket.on('thankyou', function (data) {
-      console.log(data.msg); 
-    });
-      
-});
-app.use(express.urlencoded({extended: true}));
+// require express, path, body-parser
+var express = require("express");
+var path = require("path");
+var bodyParser = require('body-parser');
+// create the express app
+var app = express();
 
-app.get('/', (request, response) => {
-    response.render('index')
-});
-app.post('/info', (request, response) => {
-    results = request.body
-    response.render('showinfo', {results: results})
-});
-app.listen(8000);
+app.use(bodyParser.urlencoded());
+// static content
+app.use(express.static(path.join(__dirname, "./static")));
+// setting up ejs and our views folder
+app.set('views', path.join(__dirname, './views'));
+app.set('view engine', 'ejs');
+// tell the express app to listen on port 3000
+var server = app.listen(3000, function() {
+	console.log("listening on port 3000");
+})
+//we're going to have /routes/index.js handle all of our routing
+var route = require('./routes/index.js')(app, server);

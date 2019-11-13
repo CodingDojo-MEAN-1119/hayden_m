@@ -1,57 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Cars</title>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type ="text/javascript">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
-    <script type ="text/javascript">
+    
         $(document).ready(function (){
-    
-            var socket = io(); //1
-    
-            socket.on('greeting', function (data) { //4
-                console.log(data.msg); //5
-                socket.emit('thankyou', { msg: 'Thank you for connecting me! -Client' }); //6
-            });
-         })
+        	// triggers the connection event in our server!
+            var socket = io.connect();
+            // submit data to the server using emit
+            $('#survey_form').submit(function(e) {
+        		e.preventDefault();
+				socket.emit("posting_form", {
+				  	name: $('#name').val(),
+                    location: $('#location').val(),
+                    language: $('#language').val(),
+                    comment: $('#comment').val()
+                });
+			});
+        	//display the emit response of the server called "updated_message" and "random_number"
+			socket.on('updated_message', function (data){
+			    $('#message').html("You emitted the following information to the server: " + JSON.stringify(data.response));
+			});
+			socket.on('random_number', function (data){
+			   $('#number').html("Your lucky number emitted by the server is : " + JSON.stringify(data.response));
+			});
+        });
     </script>
-    
 </head>
 <body>
     <div class="top">
-        <h1>Survey Form</h1><a class="home" href="/">Home</a>
+        <h2>Survey Form Revisited</h2>
     </div>
-    <div class="main-box">   
-                    <form action="/info" method="POST">
-                        <h2>Name</h2>
-                        <input type="text" name="name" placeholder="Name Here" class="form-control" required><br>
-                        <h2>Dojo Location</h2>
-                        <select name="location" class="form-control" required>
-                            <option value="" selected disabled hidden>(Select One)</option>
-                            <option value="Chicago">Chicago</option>
-                            <option value="Online">Online</option>
-                            <option value="San Jose">San Jose</option>
-                            <option value="Los Angeles">Los Angeles</option>
-                        </select><br>
-                        <h2>Favorite Language</h2>
-                        <select name="language" class="form-control" required>
-                            <option value="" selected disabled hidden>(Select One)</option>
-                            <option value="Python">Python</option>
-                            <option value="JavaScript">JavaScript</option>
-                            <option value="Java">Java</option>
-                        </select><br>
-                        <h2>Comment (optional)</h2>
-                        <textarea name="comment" cols="20" rows="3" class="form-control"></textarea><br>
-                        <input type="submit" value="Submit" class="btn btn-warning">
-                    </form>
-    </div>
- 
-
+	<div class="main-box">   
+        <form action="" id="survey_form">
+            <h2>Name</h2>
+            <input type="text" name="name" placeholder="Name Here" class="form-control" required><br>
+            <h2>Dojo Location</h2>
+            <select name="location" class="form-control" required>
+                <option value="" selected disabled hidden>(Select One)</option>
+                <option value="Chicago">Chicago</option>
+                <option value="Online">Online</option>
+                <option value="San Jose">San Jose</option>
+                <option value="Los Angeles">Los Angeles</option>
+            </select><br>
+            <h2>Favorite Language</h2>
+            <select name="language" class="form-control" required>
+                <option value="" selected disabled hidden>(Select One)</option>
+                <option value="Python">Python</option>
+                <option value="JavaScript">JavaScript</option>
+                <option value="Java">Java</option>
+            </select><br>
+            <h2>Comment (optional)</h2>
+            <textarea name="comment" cols="20" rows="3" class="form-control"></textarea><br>
+            <input type="submit" value="Submit" class="btn btn-warning">
+        </form>
+</div>
 </body>
 </html>
-

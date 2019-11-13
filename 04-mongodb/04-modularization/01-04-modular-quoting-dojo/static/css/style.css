@@ -1,0 +1,20 @@
+.title {
+    height: 50px;
+    width: 470px;
+    color: blue;
+}
+.main-content {
+    height: 500px;
+    width: 470px;
+    display: inline-block;
+    border-style: solid;
+    border-color: black;
+    border-radius: 05%;
+    padding: 20px;
+}
+.footer {
+    height: 70px;
+    width: 370px;
+    margin-top: 100px;
+}
+

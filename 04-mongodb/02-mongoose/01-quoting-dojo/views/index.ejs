@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Welcome!</title>
+</head>
+
+<body>
+    <div class="title">
+            <h1>Welcome to Quoting Dojo</h1>
+    </div>
+        <div class="main-content">
+            <form action="/quotes" method="post">
+                Name: <br>
+                <input type="text" name='name'><br>
+                Quote: <br>
+                <textarea name="quote" rows="5" cols="30"></textarea><br>
+                <button class="btn btn-primary" type="submit" value="Add quote!">Add quote!</button>
+            </form>
+            <div class="footer">
+                    <a href="/quotes">Go to quotes!</a>
+            </div>
+        </div>
+    
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Doggos</title>
+</head>
+<body>
+        <div class="top">
+            <h1>Welcome to the Message Board</h1>
+        </div>
+        <div class="main-content">
+            <div class="add-content">
+                <h3>Add a message</h3>
+                <form action="/user" method="post">
+                    Name: <br>
+                    <input type="text" name="name"><br>
+                    Message: <br>
+                    <textarea type="text" name="message" rows="5" cols="35"></textarea><br>
+                    <button class="btn btn-primary" type="submit" value="Add quote!">Add Message!</button><br><br>
+                </form>
+
+            </div>
+            <div class="display-content">
+                <h3>Add a comment</h3>
+                <% if(user) {%>
+                    <%for(let i=0; i<user.length; i++){ %>
+                        <%=user[i].name%><br>
+                        <%=user[i].message%><br>
+                        <a href="/user/<%=user[i]._id %>">View</a> | <a href="/user/destroy/<%=user[i]._id %>">Delete</a> | <a href="/user/<%=user[i]._id %>">Add Comment</a><br>
+                    <%}%>
+                <%}%>
+                <form action='/comment' method="post">
+                    <p class="margin">Name: </p><input class="comment_input" type="text" name="name">
+                    <p class="margin">Comment: </p><textarea class="comment_text"name="comment"></textarea><br>
+                    <button type="submit" value="Post comment" class="btn btn-primary" href="/">Add comment</button>
+                </form>
+
+                           
+            </div>
+        </div>
+            
+    </div>
+</body>
+</html>

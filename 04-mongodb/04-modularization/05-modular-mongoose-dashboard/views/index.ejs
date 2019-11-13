@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Doggos</title>
+</head>
+<body>
+    <div class="wrapper">
+        <h1>Welcome to the Good Bois</h1>
+        <br>
+        <% if(dogs) {%>
+        <table class="table table-striped">
+            <th>Name</th>
+            <th>Weight</th>
+            <th>Color</th>
+            <th>ID</th>
+            <th>Options</th>
+            <%for(var i=0; i<dogs.length; i++) { %>
+                <tr>
+                    <td><%=dogs[i].name%></td>
+                    <td><%=dogs[i].weight%> lbs</td>
+                    <td><%=dogs[i].color%></td>
+                    <td><%=dogs[i]._id %> | <a href="/dogs/destroy/<%=dogs[i]._id %>">Delete</a></td>
+                    <td><a href="/dogs/<%=dogs[i]._id %>">View</a> | <a href="/dogs/edit/<%=dogs[i]._id %>">Edit</a> </td>
+                </tr>
+            <%}%>
+        </table>
+        <%}%>
+        <form action="/new" method="post">
+        <button class="btn btn-primary">Add Doggo</button>
+        </form>
+    </div>
+</body>
+</html>
